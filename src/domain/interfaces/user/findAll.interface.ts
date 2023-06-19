@@ -1,5 +1,5 @@
+import { UserEntity } from '@domain/entities/user.entity';
 import { IPaginationInput } from '../common/pagination.interface';
+import { IUseCaseOptions } from '../common/useCaseOptions.interface';
 
-export interface IFindAllUserInput extends IPaginationInput {
-  name?: string;
-}
+export type IFindAllUserInput = IUseCaseOptions<UserEntity, 'name', any>;

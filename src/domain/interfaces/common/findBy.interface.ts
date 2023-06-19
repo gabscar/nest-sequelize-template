@@ -1,6 +1,3 @@
-import { IWhere, IWhereFilter } from './where.interface';
+import { IUseCaseOptions } from './useCaseOptions.interface';
 
-export interface IFindBy<C, V> {
-  where: IWhere<C, V>;
-  filter?: IWhereFilter<C>;
-}
+export type IFindBy<C, V, R> = IUseCaseOptions<C, V, R>;

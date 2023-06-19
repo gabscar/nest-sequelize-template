@@ -1,12 +1,16 @@
 import { IJwtAuthPayload } from '@domain/interfaces/auth/auth.interface';
-import { PrismaService } from '@infra/database/prisma.service';
-import { Injectable } from '@nestjs/common';
+import { UserModel } from '@infra/database/models/user.model';
+import { Injectable, Inject } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private prisma: PrismaService) {
+  constructor(
+    @Inject(UserModel)
+    private databaseService: typeof UserModel,
+  ) {
+    console.log(process.env.JWT_SECRET);
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -15,11 +19,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: IJwtAuthPayload): Promise<IJwtAuthPayload | boolean> {
-    const user = await this.prisma.user.findFirst({
+    const user = await this.databaseService.findOne({
       where: { id: payload.id },
     });
 
-    if (!user) return false;
+    if (!user.get({ plain: true })) return false;
 
     return payload;
   }

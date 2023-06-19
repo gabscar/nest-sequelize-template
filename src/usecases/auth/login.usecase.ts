@@ -32,8 +32,13 @@ export class AuthLoginUseCase implements IAuthLoginUseCase {
     params,
   }: AuthLoginParams): Promise<IAuthLoginResponse | void> {
     const user = await this.findUserService.execute({
-      where: { column: 'email', value: params.email },
+      filters: {
+        where: {
+          AND: [{ column: 'email', value: params.email }],
+        },
+      },
     });
+
     if (user.isLeft()) {
       throw UsersErrors.userNotFound();
     }

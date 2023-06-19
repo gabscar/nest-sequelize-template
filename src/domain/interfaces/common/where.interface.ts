@@ -14,4 +14,5 @@ interface IWhereParams<Column> {
 export type IWhere<C, V> = {
   column: C;
   value: V;
+  where?: IWhere<C, V>;
 };
