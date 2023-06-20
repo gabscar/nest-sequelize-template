@@ -1,4 +1,3 @@
-import { IUserRelations, UserEntity } from '@domain/entities/user.entity';
 import { IPaginationInput } from './pagination.interface';
 import { IWhere, IWhereFilter } from './where.interface';
 

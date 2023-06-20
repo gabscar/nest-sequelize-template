@@ -4,9 +4,14 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from '@infra/guards/jwt.guard';
 import { MailConfigModule } from '@app/services/queue/mailConfig.module';
 import { BullConfigModule } from '@app/services/queue/bullConfig.module';
-
+import { ConfigModule } from '@nestjs/config';
 @Module({
-  imports: [ControllerModule, MailConfigModule, BullConfigModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    ControllerModule,
+    MailConfigModule,
+    BullConfigModule,
+  ],
   controllers: [],
   providers: [
     {
