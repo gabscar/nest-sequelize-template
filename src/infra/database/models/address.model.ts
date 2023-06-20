@@ -13,7 +13,7 @@ AddressModel.init(
       primaryKey: true,
       unique: true,
     },
-    user_id: {
+    userId: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -62,7 +62,7 @@ AddressModel.init(
   {
     tableName: 'addresses',
     timestamps: false,
-    underscored: true,
+    underscored: false,
     sequelize,
   },
 );

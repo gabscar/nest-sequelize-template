@@ -34,7 +34,7 @@ interface IFindByOptionsWithNestedWheres<E, R>
 //     include: includeNestedRelations(input.relations),
 //   };
 
-//   options.where['deleted_at'] = {
+//   options.where['deletedAt'] = {
 //     [Op.is]: null,
 //   };
 
@@ -105,7 +105,7 @@ interface IFindByOptionsWithNestedWheres<E, R>
 //   //   });
 
 //   //   if (!input.filters.getSoftDeleteds) {
-//   //     options.where['deleted_at'] = {
+//   //     options.where['deletedAt'] = {
 //   //       [Op.is]: null,
 //   //     };
 //   //   }

@@ -8,7 +8,9 @@ const sequelizeConfig = {
   port: process.env.DB_PORT || 3306,
   dialect: process.env.DB_DIALECT || 'mysql',
 };
-export const sequelize = new Sequelize(sequelizeConfig as any);
+export const sequelize = new Sequelize({
+  ...sequelizeConfig,
+} as any);
 
 export const databaseProviders = [
   {

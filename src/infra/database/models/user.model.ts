@@ -40,10 +40,10 @@ UserModel.init(
       allowNull: true,
     },
   },
-  { tableName: 'users', timestamps: false, underscored: true, sequelize },
+  { tableName: 'users', timestamps: false, underscored: false, sequelize },
 );
 UserModel.hasOne(AddressModel, {
-  foreignKey: 'user_id',
+  foreignKey: 'userId',
   sourceKey: 'id',
   as: 'address',
 });

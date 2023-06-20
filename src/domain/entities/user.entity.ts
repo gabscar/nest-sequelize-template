@@ -39,7 +39,7 @@ export class AddressEntity extends IAddressRelations {
   street: string;
   zip: string;
 
-  user_id: string;
+  userId: string;
 
   createdAt: Date;
   updatedAt: Date;

@@ -42,7 +42,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      user_id: {
+      userId: {
         type: DataTypes.STRING,
         allowNull: false,
         references: {
@@ -50,14 +50,14 @@ module.exports = {
           key: 'id',
         },
       },
-      deleted_at: {
+      deletedAt: {
         type: DataTypes.DATE,
         defaultValue: null,
       },
-      created_at: {
+      createdAt: {
         type: DataTypes.DATE,
       },
-      updated_at: {
+      updatedAt: {
         type: DataTypes.DATE,
       },
     });
