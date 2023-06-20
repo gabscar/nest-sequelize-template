@@ -2,6 +2,7 @@ import { UserEntity } from '@domain/entities/user.entity';
 import { Model } from 'sequelize';
 import { DataType } from 'sequelize-typescript';
 import { sequelize } from '@infra/database/database.providers';
+import { AddressModel } from './address.model';
 
 export class UserModel extends Model<UserEntity> {}
 
@@ -41,3 +42,8 @@ UserModel.init(
   },
   { tableName: 'users', timestamps: false, underscored: true, sequelize },
 );
+UserModel.hasOne(AddressModel, {
+  foreignKey: 'user_id',
+  sourceKey: 'id',
+  as: 'address',
+});

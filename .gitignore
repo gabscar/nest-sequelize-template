@@ -1,19 +1,31 @@
+# env file
+.env
+
+# Docker database volume
+/db
+
 # compiled output
 /dist
 /node_modules
+/tmp
+
+# Prisma Migrations
+/src/infra/database/prisma/migrations
 
 # Logs
 logs
 *.log
 npm-debug.log*
 pnpm-debug.log*
+pnpm-lock.yaml
+bun.lockb
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
 # OS
 .DS_Store
-.env
+
 # Tests
 /coverage
 /.nyc_output
@@ -33,3 +45,6 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Eslint
+.eslintcache

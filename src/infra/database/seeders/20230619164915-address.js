@@ -16,7 +16,7 @@ module.exports = {
         updated_at: new Date(),
         complement: null,
         neighborhood: 'Exemplo Bairro',
-        userId: '8cafed52-eabd-41be-84ad-aa229570ae8c',
+        user_id: '8cafed52-eabd-41be-84ad-aa229570ae8c',
       },
     ]);
   },

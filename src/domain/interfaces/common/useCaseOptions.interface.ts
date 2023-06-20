@@ -30,13 +30,13 @@ export type IRelation<Relation> = {
   };
 }[keyof Relation];
 
-const object: IRelation<IUserRelations> = {
-  table: 'address',
-  values: [],
-  relations: [
-    {
-      table: 'teste',
-      values: [],
-    },
-  ],
-};
+// const object: IRelation<IUserRelations> = {
+//   table: 'address',
+//   values: [],
+//   relations: [
+//     {
+//       table: 'teste',
+//       values: [],
+//     },
+//   ],
+// };

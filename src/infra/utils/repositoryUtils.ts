@@ -164,7 +164,6 @@ export class SequelizeUseCaseOptionsAdapter<E, F, R> {
     if (!filters?.where) return;
 
     const whereOption = this.handleWhereOperations(filters.where);
-    console.log(whereOption);
     this.options.where = whereOption;
   }
 
@@ -217,7 +216,7 @@ export class SequelizeUseCaseOptionsAdapter<E, F, R> {
 
   private handleOrders(orders: IUseCaseOptions<E, F, R>['orders']) {
     if (orders?.length > 0 === false) {
-      this.options.orderBy = [['updated_at', 'DESC']];
+      this.options.orderBy = [['updatedAt', 'DESC']];
       return;
     }
 

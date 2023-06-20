@@ -42,7 +42,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      userId: {
+      user_id: {
         type: DataTypes.STRING,
         allowNull: false,
         references: {

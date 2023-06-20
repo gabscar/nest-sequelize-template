@@ -17,6 +17,7 @@ import { PassportModule } from '@nestjs/passport';
 import { BullConfigModule } from '@app/services/queue/bullConfig.module';
 import { JwtStrategy } from '@infra/strategy/jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
+require('dotenv').config();
 
 const servicesArr = [
   { useClass: FindUserService, provide: INJECTION_SERVICE_FINDBY_USER },
