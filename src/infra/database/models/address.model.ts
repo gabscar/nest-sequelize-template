@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '@infra/database/database.providers';
-
-import { AddressEntity } from '@domain/entities/user.entity';
+import { AddressEntity } from '@domain/entities/address.entity';
 
 export class AddressModel extends Model<AddressEntity> {}
 

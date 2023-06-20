@@ -1,6 +1,7 @@
+import { AddressEntity } from './address.entity';
+
 export abstract class IUserRelations {
   address: AddressEntity;
-  // teste: ITeste;
 }
 export class UserEntity {
   id: string;
@@ -23,41 +24,4 @@ export interface IUserEntity {
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
-}
-
-export abstract class IAddressRelations {
-  // teste: ITeste;
-}
-
-export class AddressEntity extends IAddressRelations {
-  id: string;
-  city: string;
-  complement: string;
-  neighborhood: string;
-  number: string;
-  state: string;
-  street: string;
-  zip: string;
-
-  userId: string;
-
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
-
-  constructor(userProps: AddressEntity) {
-    super();
-    Object.assign(this, userProps);
-  }
-}
-
-export interface ITeste {
-  id: string;
-  city: string;
-  complement: string;
-  neighborhood: string;
-  number: string;
-  state: string;
-  street: string;
-  zip: string;
 }
