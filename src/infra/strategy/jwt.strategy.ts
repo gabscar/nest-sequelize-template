@@ -10,7 +10,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     @Inject(UserModel)
     private databaseService: typeof UserModel,
   ) {
-    console.log(process.env.JWT_SECRET);
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
