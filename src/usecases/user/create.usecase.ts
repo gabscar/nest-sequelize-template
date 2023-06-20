@@ -2,21 +2,20 @@ import {
   INJECTION_SERVICE_AUTH,
   INJECTION_SERVICE_CREATE_USER,
 } from '@domain/constants/injections/user.constant';
-import { UsersErrors } from '@domain/errors/user/userError';
 import { ICreateUserInput } from '@domain/interfaces/user/create.interface';
-import { IOutputCreateUserDto } from '@domain/usecases/user/create.usecase';
 import { Inject } from '@nestjs/common';
 import { UserEntity } from '@domain/entities/user.entity';
-import { IAbstractService } from '@domain/services/baseAbstract.service';
 import { IAuthService } from '@domain/services/auth/auth.service';
 import { AuthenticationErrors } from '@domain/errors/auth/authError';
+import { IOutputCreateUserService } from '@domain/services/entities/user/create.service';
+import { IBaseUseCase } from '@domain/usecases/base.usecase';
 
 export class CreateUserUseCase {
   constructor(
     @Inject(INJECTION_SERVICE_CREATE_USER)
-    private readonly userService: IAbstractService<
-      ICreateUserInput,
-      IOutputCreateUserDto
+    private readonly userService: IBaseUseCase<
+      [ICreateUserInput],
+      IOutputCreateUserService
     >,
     @Inject(INJECTION_SERVICE_AUTH)
     private readonly authService: IAuthService,
@@ -30,7 +29,7 @@ export class CreateUserUseCase {
     });
 
     if (user.isLeft()) {
-      throw UsersErrors.entityCreationError();
+      throw user.value;
     }
 
     return user.value;

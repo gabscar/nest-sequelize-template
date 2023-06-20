@@ -1,24 +1,24 @@
 import { UsersErrors } from '@domain/errors/user/userError';
-import { IFindByUserInput } from '@domain/interfaces/user/findBy.interface';
+import { ICreateUserInput } from '@domain/interfaces/user/create.interface';
 import { IUserRepositoryDatabase } from '@domain/repositories/user.repository';
-import { IOutputCreateUserDto } from '@domain/usecases/user/create.usecase';
-import { IOutputFindByUserDto } from '@domain/usecases/user/findBy.usecase';
 import { Inject } from '@nestjs/common';
 import { right, left } from '@src/shared/either';
-import { IAbstractService } from '../../../domain/services/baseAbstract.service';
 import { INJECTION_REPOSITORY_USER } from '@domain/constants/injections/user.constant';
+import {
+  IOutputCreateUserService,
+  ICreateUserEntityService,
+} from '@domain/services/entities/user/create.service';
 
-export class FindUserService
-  implements IAbstractService<IFindByUserInput, IOutputFindByUserDto>
-{
+export class CreateUserEntityService implements ICreateUserEntityService {
   constructor(
     @Inject(INJECTION_REPOSITORY_USER)
     private readonly userRepository: IUserRepositoryDatabase,
   ) {}
 
-  async execute(params: IFindByUserInput): Promise<IOutputFindByUserDto> {
+  async execute(params: ICreateUserInput): Promise<IOutputCreateUserService> {
     try {
-      const user = await this.userRepository.findBy(params);
+      const user = await this.userRepository.create(params);
+
       return right(user);
     } catch (err) {
       console.log(err);

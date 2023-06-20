@@ -2,15 +2,15 @@ import { UserEntity } from '@domain/entities/user.entity';
 import { IPaginationOutput } from '@domain/interfaces/common/pagination.interface';
 import { ICreateUserInput } from '@domain/interfaces/user/create.interface';
 import { IFindAllUserInput } from '@domain/interfaces/user/findAll.interface';
-import { IFindByUserInput } from '@domain/interfaces/user/findBy.interface';
 import {
   IUserRepositoryDatabase,
   updateWhereUser,
 } from '@domain/repositories/user.repository';
 
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UserModel } from '@infra/database/models/user.model';
 import { SequelizeUseCaseOptionsAdapter } from '@infra/utils/repositoryUtils';
+import { IInputFindByUserService } from '@domain/services/entities/user/findby.service';
 
 @Injectable()
 export class UserRepositoryDatabase implements IUserRepositoryDatabase {
@@ -40,7 +40,7 @@ export class UserRepositoryDatabase implements IUserRepositoryDatabase {
     };
   }
 
-  async findBy(params: IFindByUserInput): Promise<UserEntity> {
+  async findBy(params: IInputFindByUserService): Promise<UserEntity> {
     const { options } = new SequelizeUseCaseOptionsAdapter(params);
     const user = await UserModel.findOne(options);
     return new UserEntity(user.get({ plain: true }));

@@ -1,7 +1,5 @@
-import { CreateUserDto } from '@app/dtos/user/create.dto';
 import { INJECTION_USECASE_FINDBY_USER } from '@domain/constants/injections/user.constant';
-import { ICreateUserUseCase } from '@domain/usecases/user/create.usecase';
-import { Body, Controller, Get, Inject, Param, Query } from '@nestjs/common';
+import { Controller, Get, Inject, Param } from '@nestjs/common';
 
 import { UserPresenter } from '@app/presenters/user.presenter';
 import { IsPublic } from '@infra/decorators/isPublic.decorator';

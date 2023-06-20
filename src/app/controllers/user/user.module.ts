@@ -9,16 +9,16 @@ import { CreateUserController } from './create.controller';
 import { UserRepositoryDatabase } from '@infra/repositories/user.repository';
 import { DatabaseModule } from '@infra/database/database.module';
 import { CreateUserUseCase } from '@usecases/user/create.usecase';
-import { CreateUserService } from '@infra/services/user/create.service';
+import { CreateUserEntityService } from '@infra/services/entities/user/create.service';
 import { AuthModule } from '../auth/auth.module';
-import { FindUserService } from '@infra/services/user/findBy.service';
+import { FindUserEntityService } from '@infra/services/entities/user/findBy.service';
 import { FindUserController } from './find.controller';
 import { FindUserUseCase } from '@usecases/user/find.useCase';
 import { INJECTION_SERVICE_FINDBY_USER } from '@domain/constants/injections/user.constant';
 
 const servicesArr = [
-  { useClass: CreateUserService, provide: INJECTION_SERVICE_CREATE_USER },
-  { useClass: FindUserService, provide: INJECTION_SERVICE_FINDBY_USER },
+  { useClass: CreateUserEntityService, provide: INJECTION_SERVICE_CREATE_USER },
+  { useClass: FindUserEntityService, provide: INJECTION_SERVICE_FINDBY_USER },
 ];
 
 const useCasesArr = [

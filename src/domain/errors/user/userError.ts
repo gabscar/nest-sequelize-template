@@ -9,6 +9,7 @@ export class UsersErrors extends IError {
         message:
           'Error during creation of the user entity, please try again later',
         shortMessage: 'entityCreationFailed',
+        // moreInformations: moreInformations,
       },
     });
   }
